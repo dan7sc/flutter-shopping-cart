@@ -1,4 +1,4 @@
-import 'package:class_shopping_cart/home/home_controller.dart';
+import 'package:class_shopping_cart/modules/home/home_controller.dart';
 import 'package:class_shopping_cart/modules/cart/cart_page.dart';
 import 'package:class_shopping_cart/modules/cart/cart_controller.dart';
 import 'package:class_shopping_cart/shared/models/product_model.dart';
