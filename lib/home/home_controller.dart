@@ -1,13 +1,12 @@
 import 'package:class_shopping_cart/controller.dart';
+import 'package:class_shopping_cart/shared/models/product_model.dart';
 
-enum HomeStatus { empty, error, loading, success }
+class HomeController extends Controller<List<ProductModel>> {
+  HomeController() : super([]);
 
-class HomeController extends Controller<HomeStatus> {
-  HomeController() : super(HomeStatus.empty);
-
-  Future<void> login() async {
-    update(HomeStatus.loading);
-    await Future.delayed(Duration(seconds: 3));
-    update(HomeStatus.success);
+  Future<void> getProducts() async {
+    await Future.delayed(Duration(seconds: 2));
+    update(List.generate(50,
+        (index) => ProductModel(name: "Produto $index ", price: 1.0 * index)));
   }
 }
