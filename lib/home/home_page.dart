@@ -1,7 +1,6 @@
 import 'package:class_shopping_cart/home/home_controller.dart';
 import 'package:class_shopping_cart/modules/cart/cart_page.dart';
-import 'package:class_shopping_cart/shared/models/product_model.dart';
-import 'package:class_shopping_cart/state_builder.dart';
+import 'package:class_shopping_cart/modules/cart/cart_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+  final cartController = CartController();
 
   @override
   void initState() {
@@ -33,23 +33,6 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.shopping_cart),
           ),
         ],
-      ),
-      body: StateBuilder<List<ProductModel>>(
-        controller: controller,
-        builder: (_, state) {
-          if (state.isEmpty) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return ListView.builder(
-            itemCount: state.length,
-            itemBuilder: (_, index) => ListTile(
-              title: Text(state[index].name),
-              trailing: Text(state[index].price.toString()),
-            ),
-          );
-        },
       ),
     );
   }
