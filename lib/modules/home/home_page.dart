@@ -30,13 +30,35 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => CartPage(
-                            controller: cartController,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CartPage(
+                    controller: cartController,
+                  ),
+                ),
+              );
             },
-            icon: Icon(Icons.shopping_cart),
+            icon: Stack(
+              children: [
+                Icon(
+                  Icons.shopping_cart,
+                  size: 30,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: StateBuilder<List<ProductModel>>(
+                    builder: (_, state) => CircleAvatar(
+                      radius: 9,
+                      child: Text(
+                        state.length.toString(),
+                        style: TextStyle(fontSize: 8),
+                      ),
+                    ),
+                    controller: cartController
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
