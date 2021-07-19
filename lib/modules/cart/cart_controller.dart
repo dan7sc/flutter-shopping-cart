@@ -5,6 +5,8 @@ class CartController extends Controller<List<ProductModel>> {
   CartController() : super([]);
 
   void addItem(ProductModel product) {
-    state.add(product);
+    final list = state;
+    list.add(product);
+    update(list);
   }
 }
