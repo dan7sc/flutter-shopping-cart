@@ -5,21 +5,20 @@ import 'package:flutter/material.dart';
 import 'cart_controller.dart';
 
 class CartPage extends StatefulWidget {
-  CartPage({Key? key}) : super(key: key);
+  final CartController controller;
+  CartPage({Key? key, required this.controller}) : super(key: key);
 
   @override
   _CartPageState createState() => _CartPageState();
 }
 
 class _CartPageState extends State<CartPage> {
-  final controller = CartController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: StateBuilder<List<ProductModel>>(
-        controller: controller,
+        controller: widget.controller,
         builder: (_, state) {
           if (state.isEmpty) {
             return Center(

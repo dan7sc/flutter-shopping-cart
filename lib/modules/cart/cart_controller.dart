@@ -4,9 +4,7 @@ import 'package:class_shopping_cart/controller.dart';
 class CartController extends Controller<List<ProductModel>> {
   CartController() : super([]);
 
-  get items => null;
-
   void addItem(ProductModel product) {
-    this.items.add(product);
+    state.add(product);
   }
 }
